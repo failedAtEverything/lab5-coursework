@@ -1,0 +1,16 @@
+﻿<h1>Broadcast</h1>
+
+<form asp-action="Edit">
+    <p>WeekNumber: <input name="WeekNumber" type="number" value="@Model.WeekNumber"></p>
+    <p>WeekMonth: <input name="WeekMonth" type="number" value="@Model.WeekMonth"></p>
+    <p>WeekYear: <input name="WeekYear" type="number" value="@Model.WeekYear"></p>
+    <p>StartTime: <input name="StartTime" type="time" value="@Model.StartTime"></p>
+    <p> EndTime: <input name="EndTime" type="time" value="@Model.EndTime"></p>
+    <p>Program: <select name="Program" asp-items="@new SelectList(ViewBag.Programs, Model.Program)"></select></p>
+    <p>Employee: <select name="Employee" asp-items="@new SelectList(ViewBag.Employees, Model.Employee)"></select></p>
+    <p>Guests: <input name="Guests" value="@Model.Guests"></p>
+    <p><input type="submit" value="Save" asp-route-id="@Model.Id"></p>
+</form>
+
+<a asp-action="Index">Back to List</a>
+

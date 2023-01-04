@@ -1,0 +1,10 @@
+﻿<h>Program</h>
+
+<form asp-action="Create">
+    <p>Name: <input name="Name"></p>
+    <p>Length hours: <input name="Length"></p>
+    <p>Rating: <input name="Rating"></p>
+    <p>Genre: <select name="Genre" asp-items="@new SelectList(ViewBag.Genres)"></select></p>
+    <p>Description: <input name="Description"></p>
+    <p><input type="submit" value="Save"><a asp-action="Index">Back</a></p>
+</form>

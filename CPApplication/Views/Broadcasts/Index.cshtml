@@ -1,0 +1,77 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+<h1>Broadcasts</h1>
+<form asp-action="Index">
+    <p>Genre: <input name="Genre" value="@ViewBag.Genre">
+    Min length: <input type="number" name="MinLength" value="@ViewBag.MinLength">
+    Max length: <input type="number" name="MaxLength" value="@ViewBag.MaxLength">
+    Year: <input type="number" name="WeekYear" value="@ViewBag.WeekYear"></p>
+    <p>Month: <input type="number" name="WeekMonth" value="@ViewBag.WeekMonth">
+    Employee: <input name="Employee" value="@ViewBag.Employee">
+    Guest: <input name="Guest" value="@ViewBag.Guest">
+    <input type="submit" value="Filter"></p>
+</form>
+<p>
+    <a asp-action="Create">NEW</a>
+</p>
+Pages: @Html.PagedListPager(
+        (IPagedList)Model,
+        (page) => Url.Action("Index", "Broadcasts", 
+        new 
+        { 
+            page = page,
+            sort = ViewBag.Sort,
+            Genre = ViewBag.Genre
+        }
+))
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("ID", "Index", new { sort="Id" })
+            </th>
+            <th>
+                @Html.ActionLink("Program", "Index", new { sort="Program" })
+            </th>
+            <th>
+                @Html.ActionLink("WeekNumber", "Index", new { sort="WeekNumber" })
+            </th>
+            <th>
+                @Html.ActionLink("WeekMonth", "Index", new { sort="WeekMonth" })
+            </th>
+            <th>
+                @Html.ActionLink("WeekYear", "Index", new { sort="WeekYear" })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Program
+                </td>
+                <td>
+                    @item.WeekNumber
+                </td>
+                <td>
+                    @item.WeekMonth
+                </td>
+                <td>
+                    @item.WeekYear
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

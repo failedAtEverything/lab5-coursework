@@ -1,0 +1,19 @@
+﻿<h1>
+
+</h1>
+
+<dl>
+    <dt>ID</dt>
+    <dd>@Model.Id</dd>
+    <dt>Name</dt>
+    <dd>@Model.FullName</dd>
+    <dt>Organization</dt>
+    <dd>@Model.Organization</dd>
+    <dt>Purpose</dt>
+    <dd>@Model.Purpose</dd>
+    <dt>Program</dt>
+    <dd>@Model.Program</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-action="Index">Back to List</a>

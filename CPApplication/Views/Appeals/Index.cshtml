@@ -1,0 +1,61 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+<h1>Appeals</h1>
+<p>
+    <a asp-action="Create">NEW</a>
+</p>
+Pages: @Html.PagedListPager(
+        (IPagedList)Model,
+        (page) => Url.Action("Index", "Appeals", new { page = page }
+))
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                FullName
+            </th>
+            <th>
+                Organization
+            </th>
+            <th>
+                Purpose
+            </th>
+            <th>
+                Program
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.FullName
+                </td>
+                <td>
+                    @item.Organization
+                </td>
+                <td>
+                    @item.Purpose
+                </td>
+                <td>
+                    @item.Program
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

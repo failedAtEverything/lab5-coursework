@@ -1,0 +1,19 @@
+﻿<p>Program</p>
+
+<dl>
+    <dt>ID</dt>
+    <dd>@Model.Id</dd>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Length</dt>
+    <dd>@Model.Length</dd>
+    <dt>Rating</dt>
+    <dd>@Model.Rating</dd>
+    <dt>Genre</dt>
+    <dd>@Model.GenreName</dd>
+    <dt>Description</dt>
+    <dd>@Model.Description</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-action="Index">Back to List</a>

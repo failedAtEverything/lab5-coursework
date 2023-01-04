@@ -1,0 +1,10 @@
+﻿<h>Program</h>
+
+<form asp-action="Edit">
+    <p>Name: <input name="Name" value="@Model.Name"></p>
+    <p>Length hours: <input name="Length" value="@Model.Length"></p>
+    <p>Rating: <input name="Rating" value="@Model.Rating"></p>
+    <p>Genre: <select name="Genre" asp-items="@new SelectList(ViewBag.Genres, Model.GenreName)"></select></p>
+    <p>Description: <input name="Description" value="@Model.Description"></p>
+    <p><input type="submit" value="Save" asp-route-id="@Model.Id"><a asp-action="Index">Back</a></p>
+</form>

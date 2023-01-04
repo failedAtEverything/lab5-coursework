@@ -1,0 +1,9 @@
+﻿<h1>Appeal</h1>
+
+<form asp-action="Edit">
+    <p>Name: <input name="FullName" value="@Model.FullName"></p>
+    <p>Organization: <input name="Organization" value="@Model.Organization"></p>
+    <p>Purpose: <input name="Purpose" value="@Model.Purpose"></p>
+    <p>Program: <input name="Program" value="@Model.Program.ToString()"></p>
+    <p><input type="submit" value="Save" asp-route-id="@Model.Id"></p>
+</form>

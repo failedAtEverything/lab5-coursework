@@ -1,0 +1,15 @@
+﻿<h1>Broadcast</h1>
+
+<form asp-action="Create">
+    <p>WeekNumber: <input name="WeekNumber" type="number"></p>
+    <p>WeekMonth: <input name="WeekMonth" type="number"></p>
+    <p>WeekYear: <input name="WeekYear" type="number"></p>
+    <p>StartTime: <input name="StartTime" type="time"></p>
+    <p> EndTime: <input name="EndTime" type="time"></p>
+    <p>Program: <select name="Program" asp-items="@new SelectList(ViewBag.Programs)"></select></p>
+    <p>Employee: <select name="Employee" asp-items="@new SelectList(ViewBag.Employees)"></select></p>
+    <p>Guests: <input name="Guests"></p>
+    <p><input type="submit" value="Save"></p>
+</form>
+
+<a asp-action="Index">Back to List</a>

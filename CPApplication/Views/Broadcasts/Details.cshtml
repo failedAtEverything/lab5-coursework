@@ -1,0 +1,23 @@
+﻿<dl>
+    <dt>ID</dt>
+    <dd>@Model.Id</dd>
+    <dt>Week</dt>
+    <dd>@Model.WeekNumber</dd>
+    <dt>Month</dt>
+    <dd>@Model.WeekMonth</dd>
+    <dt>Year</dt>
+    <dd>@Model.WeekYear</dd>
+    <dt>Start Time</dt>
+    <dd>@Model.StartTime</dd>
+    <dt>End Time</dt>
+    <dd>@Model.EndTime</dd>
+    <dt>Program</dt>
+    <dd>@Model.Program</dd>
+    <dt>Employee</dt>
+    <dd>@Model.Employee</dd>
+    <dt>Guests</dt>
+    <dd>@Model.Guests</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-action="Index">Back to List</a>

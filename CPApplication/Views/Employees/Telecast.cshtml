@@ -1,0 +1,23 @@
+﻿@using CPApplication.Controllers;
+@using CPApplication.Core.Models;
+
+@model Pair<Employee, Dictionary<int, Dictionary<string, Pair<double, List<string>>>>>
+
+<h3>Statistic for @Model.First.FullName</h3><br>
+
+@foreach (var yearStatistics in Model.Second)
+{
+    <h4>Year @yearStatistics.Key:</h4>
+    @foreach (var monthStatistics in Model.Second[yearStatistics.Key])
+    {
+        var programsAsString = string.Empty;
+        monthStatistics.Value.Second.ForEach(x => programsAsString += x + ", ");
+        programsAsString = programsAsString.TrimEnd(' ');
+        programsAsString = programsAsString.TrimEnd(',');
+        <h6>@monthStatistics.Key:</h6>
+        <ul>
+            <li>Work hours: @monthStatistics.Value.First</li>
+            <li>Programs: @programsAsString</li>
+        </ul>
+    }
+}

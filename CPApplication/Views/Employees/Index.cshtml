@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CPApplication.Core.Models.Employee>
+
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees</h1>
+
+<form asp-action="Index">
+    <div>
+        <p>Name: <input name="Name" value="@ViewBag.Name"></p>
+        <p>Position: <input name="Pos" value="@ViewBag.Pos"></p>
+        <p><input type="submit" value="FILTER" asp-route-sort="@ViewBag.Sort"></p>
+    </div>
+</form>
+
+<p>
+    <a asp-action="Create">NEW</a>
+</p>
+Pages: @Html.PagedListPager(
+        (IPagedList)Model,
+        (page) => Url.Action("Index", "Employees", new { page = page, sort = ViewBag.Sort, name = ViewBag.Name, pos = ViewBag.Pos }
+))
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("ID", "Index", new { sort = "ID", name = ViewBag.Name, pos = ViewBag.Pos })
+            </th>
+            <th>
+                @Html.ActionLink("Name", "Index", new { sort = "Name", name = ViewBag.Name, pos = ViewBag.Pos })
+            </th>
+            <th>
+                @Html.ActionLink("Position", "Index", new { sort = "Position", name = ViewBag.Name, pos = ViewBag.Pos })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="Telecast" asp-route-id="@item.Id">Telecast</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
